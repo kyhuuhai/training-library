@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'users#index'
   resources :books
   get 'signup' => 'users#new'
+  get 'author' => 'authors#index'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
