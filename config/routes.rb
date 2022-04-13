@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+  get 'index_category' => 'categories#index'
   resources :users
   resources :authors
   resources :books
+  resources :categories
   namespace :admin do
     resources :publishers
     resources :authors
