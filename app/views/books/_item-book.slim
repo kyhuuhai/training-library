@@ -11,9 +11,9 @@
       p.book-amount 
         | Sô lượng:
         =book.amount
-      p.book-rate
-        | Đánh giá:
-        -rate = Rate.find(book.id)
-        =rate.star
+      / p.book-rate
+      /   | Đánh giá:
+      /   -rate = Rate.find(book.id)
+      /   =rate.star
       =link_to "follow",'#',class: "follow"          
-      =link_to "Details", "#",class: "details"
+      =link_to "Details", book ,class: "details"

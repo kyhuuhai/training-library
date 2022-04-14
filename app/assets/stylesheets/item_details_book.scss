@@ -1,0 +1,16 @@
+.book_title{
+  text-align: center; 
+}
+.book_form{
+  margin-top: 50px;
+}
+.book_details{
+  text-align: center;
+  &-list{
+    padding-top: 10px;
+		border: 1px solid black;
+		width: 150px;
+		height: 200px;
+    margin-left: 44%;
+	}
+}

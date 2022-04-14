@@ -1,0 +1,20 @@
+.book_details 
+  .book_details-list 
+    p.book-title 
+      | Tên sách: 
+      =@books.name
+    p.book-author
+      | Tác giả: 
+      -author = Author.find(@books.author_id)
+      = author.name
+    p.book-amount 
+      | Sô lượng:
+      =@books.amount
+    p.book-price 
+      | Giá :
+      =@books.price
+    p.book-publisher
+      | Nhà xuất bản: 
+      -publisher = Publisher.find(@books.publisher_id)
+      = publisher.name
+    =link_to "comment","#"
