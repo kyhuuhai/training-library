@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   resources :books
   get 'signup' => 'users#new'
   resources :users
-  resources :categories
+  namespace :admin do
+    resources :categories
+  end
 end
