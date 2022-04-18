@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'users#index'
-  resources :books
+  resources :books do
+    resources :comments
+  end
   get 'signup' => 'users#new'
   resources :users
   resources :authors

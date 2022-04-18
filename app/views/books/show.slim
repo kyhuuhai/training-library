@@ -20,4 +20,5 @@ h1.book_title
           p.book-publisher
             | Nhà xuất bản: 
             =@books.publisher.name
-          =link_to "comment","#"
+          =render @books.comments
+          =render 'comments/form'
