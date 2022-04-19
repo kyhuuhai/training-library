@@ -1,5 +1,5 @@
 .publis{
-  width: 900px !important;
+  width: 600px !important;
 }
 .pub{
   justify-content:center;
@@ -7,16 +7,33 @@
 }
 .publisher{
   margin-top: 50px;
+  &-amount{
+    width: 80px;
+  }
+  &-but{
+    display: flex;
+    gap: 0 15px;
+  }
   &-list{
     display: flex;
-    justify-content:center;
-    align-items:center;
     flex-direction:column;
-    padding: 20px 20px;
-    background-color: #fff;
+    border-bottom: 1px solid;
+  }
+  &-item{
+    display: flex;
+    gap: 0px 98px;
+    padding: 25px 75px;
+    color: black;
+    font-weight: 400;
+  }
+  &-detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 65px;  
   }
   &-add{
-    padding: 20px 15px;
+    padding: 20px 62px;
     border-radius: 5px;
     color: #fff;
     background-color: rgb(230, 182, 62);
@@ -27,18 +44,52 @@
       color: #000;
     }
   }
-  &-item{
-    display: flex;
-    justify-content:center;
-    align-items:stretch;
-    gap: 80px 30px;
-    // border: 1px solid gray;
-    padding: 20px 5px ;
-  }
+  
   &-name{
     display: inline-block;
-    width: 800px;
-    font-size: 18px;
+    width: 150px;
+  }&-form{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 10px 35px;
+    &-name{
+      margin-right: 30px;
+      font-size: 18px;
+    }
+    &-fieldname{
+      margin-right: 40px;
+      input{
+        padding: 5px 10px;
+        width: 700px;
+      }
+    }
+  }
+  &-submit{
+    input{  
+      padding: 7px 20px;
+      background-color: greenyellow;
+      border: none;
+      text-transform: capitalize;
+      font-size: 15px;
+      border-radius: 5px;
+      &:hover{
+        background-color: rgb(228, 231, 28);
+        color: black;
+      }
+    }
+  }
+  &-new{
+    padding: 5px 10px;
+    background-color: white;
+    margin: 10px 0;
+  }
+  &-menu{
+    width: 200px;
+    background-color: #fff;
+    height: 500px;
+    box-shadow: 0px 12px 35px rgba(160, 121, 0, 0.2);
+
   }
 }
 .edit,.delete{
@@ -54,4 +105,39 @@
 }
 .delete{
   background-color: rgb(231, 62, 62);
+}
+.add-f{
+  display: none;
+}
+.display{
+  display: block;
+}
+.head{
+  padding: 25px 75px;
+  background-color: #fff;
+  box-shadow: 0px 12px 35px rgba(160, 121, 0, 0.2);
+  border-radius: 10px;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  gap: 0px 145px;
+  margin-top: 20px;
+  &-details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 135px;
+  }
+}
+.container-admin{
+  margin-top: 50px;
+  background-color: rgb(255,247,223);
+  padding: 0 100px;
+  display: flex;
+  flex-direction: row;
+  gap: 0 40px;
+}
+.cre{
+  display: flex;
+  gap: 0px 100px;
 }
