@@ -3,14 +3,10 @@ Rails.application.routes.draw do
   resources :books
   get 'signup' => 'users#new'
   resources :users
-  namespace :admin do
-    resources :categories
   resources :authors
   namespace :admin do
-<<<<<<< HEAD
     resources :publishers
-=======
->>>>>>> c2e8d46 (update manage author)
     resources :authors
+    resources :categories
   end
 end
