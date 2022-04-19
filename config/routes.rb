@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   get 'index_category' => 'categories#index'
   resources :users
+  namespace :admin do
+    resources :categories
   resources :authors
   resources :books
   resources :categories
