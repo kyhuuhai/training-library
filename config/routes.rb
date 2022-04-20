@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   resources :authors
   namespace :admin do
     resources :publishers
+    resources :authors
+    resources :categories
   end
 end
