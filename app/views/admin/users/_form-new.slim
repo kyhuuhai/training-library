@@ -1,0 +1,26 @@
+.publisher-new
+  h1.new 
+    | New User
+  .user-form
+    = form_for([:admin, @user]) do |form|
+      .user-form
+        .user-form-name
+          = form.label :name 
+        .user-form-fieldname
+          = form.text_field :name
+        .user-form-email
+          = form.label :email 
+        .user-form-fieldname
+          = form.text_field :email
+        .user-form-password
+          = form.label :password 
+        .user-form-fieldname
+          = form.password_field :password
+        .user-form-password-comfirmation
+          = form.label :password_confirmation
+        .user-form-fieldname
+          = form.password_field :password_confirmation  
+        = form.check_box :is_admin, class: 'form-check-input'
+        = form.label :is_admin, "Admin"
+        .user-submit
+          = form.submit "Create"

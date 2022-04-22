@@ -1,0 +1,11 @@
+.user-item
+  .user-name 
+    = user.name
+  .cre
+    .user-detail
+      p.user-email 
+        = user.email
+    .user-button
+      = link_to "Edit", admin_user_path(user.id), class: "edit"        
+      = link_to "Delete", admin_user_path(user.id), class: "delete",
+       method: :delete, data: {confirm: "Are You sure?"}

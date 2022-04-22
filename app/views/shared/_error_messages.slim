@@ -1,10 +1,10 @@
-- if object.errors.any?
+- if @user.errors.any?
   #error_explanation
     .alert.alert-danger.form-control
       |  The form contains 
-      = pluralize(object.errors.count, "error")
+      = pluralize(@user.errors.count, "error")
       | . 
     ul
-      - object.errors.full_messages.each do |msg|
+      - @user.errors.full_messages.each do |msg|
         li
           = msg

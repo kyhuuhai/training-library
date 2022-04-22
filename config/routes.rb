@@ -7,5 +7,12 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   resources :users
+  namespace :admin do
+    get 'users/show'
+    get 'users/add'
+    delete 'users/destroy'
+    resources :users
+  end
+  get 'index' => 'users#index'
   resources :authors
 end

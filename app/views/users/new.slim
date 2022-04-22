@@ -4,7 +4,7 @@
     | Sign up
 .row
   .col-md-offset-3
-    = form_for(@user) do |f|
+    = form_for(@user) do |f| 
       = render 'shared/error_messages', object: f
       = f.label :name
       = f.text_field :name, class: 'form-control'
