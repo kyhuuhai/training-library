@@ -7,18 +7,18 @@ h1.book_title
           img src=" https://png.pngtree.com/element_our/20190529/ourlarge/pngtree-book-pencil-study-book-image_1216472.jpg"
           p.book-title 
             | Tên sách: 
-            =@books.name
+            = @books.name
           p.book-author
             | Tác giả: 
             = @books.author.name
           p.book-amount 
             | Sô lượng:
-            =@books.amount
+            = @books.amount
           p.book-price 
             | Giá :
-            =@books.price
+            = @books.price
           p.book-publisher
             | Nhà xuất bản: 
-            =@books.publisher.name
-          =render @books.comments
-          =render 'comments/form'
+            = @books.publisher.name
+          = render @books.comments
+          = render 'comments/form'

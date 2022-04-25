@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :comments
   end
   get 'signup' => 'users#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
   resources :users
   resources :authors
   namespace :admin do
