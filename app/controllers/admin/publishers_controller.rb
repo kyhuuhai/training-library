@@ -1,11 +1,16 @@
 class Admin::PublishersController < ApplicationController
+  layout :dynamic_layout
   before_action :get_publishers, except: [:index, :new, :create]
-
+  
   def index
     @publishers = Publisher.search(params)
       .order_name
       .paginate(page: params[:page], per_page: 10)
-  end
+      respond_to do |format|
+        format.html
+        format.xls { send_data @publishers.to_xls(col_sep: "\t") } 
+      end
+    end 
 
   def new
     @publisher = Publisher.new
@@ -14,11 +19,11 @@ class Admin::PublishersController < ApplicationController
   def create
     @publisher = Publisher.new(user_params)
     if @publisher.save
-      flash[:success] = "Publisher successfully"
-      redirect_to admin_publishers_path
+      flash[:success] = "Publisher create successfully"
     else
-      render :new
+      flash[:warning] = "Publisher create failed"
     end
+    redirect_to admin_publishers_path
   end
 
   def show
@@ -27,15 +32,19 @@ class Admin::PublishersController < ApplicationController
   def update
     if @publisher.update(user_params)
       flash[:success] = "Publisher updated"
-      redirect_to admin_publishers_path
     else
-      render :new
+      flash[:warning] = "Publisher update failed"
     end
+    redirect_to admin_publishers_path
   end
 
   def destroy
-    @publisher.destroy
-    flash[:success] = "Publisher deleted"
+    if @publisher.books.exists?
+      flash[:warning] = "Delete failed"
+    else
+      @publisher&.destroy
+      flash[:success] = "Delete successfully"
+    end
     redirect_to admin_publishers_path
   end
 
@@ -48,6 +57,14 @@ class Admin::PublishersController < ApplicationController
       @publisher = Publisher.find_by_id(params[:id])
       return if @publisher
       flash[:warning] = "That publisher could not be found"
-      redirect_to admin_publishers_path 
+      redirect_to admin_publishers_path  
+    end
+
+    def dynamic_layout
+      if true # replace for if current_user.admin?
+        "admin"
+      else
+        "users"
+      end
     end
 end

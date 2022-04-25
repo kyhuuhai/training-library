@@ -1,0 +1,14 @@
+.container-admin
+  .publisher-content
+    h2.pub-title
+      | Manage Books
+    .publisher-but
+    .publisher-but
+      = render "add"
+      = render "export"
+    = render "search"
+    = render "shared/notifi_messa"
+    = render "head"
+    = render @books
+    .center_pag
+      = will_paginate @books

@@ -10,6 +10,14 @@
   &-amount{
     width: 80px;
   }
+  &-button{
+    display: flex;
+    gap: 0px 1px;
+  }
+  &-but{
+    display: flex;
+    gap: 0 15px;
+  }
   &-list{
     display: flex;
     flex-direction:column;
@@ -29,7 +37,7 @@
     gap: 0 65px;  
   }
   &-add{
-    padding: 20px 15px;
+    padding: 20px 62px;
     border-radius: 5px;
     color: #fff;
     background-color: rgb(230, 182, 62);
@@ -44,6 +52,7 @@
   &-name{
     display: inline-block;
     width: 150px;
+    text-transform: capitalize;
   }&-form{
     display: flex;
     align-items: flex-end;
@@ -57,7 +66,7 @@
       margin-right: 40px;
       input{
         padding: 5px 10px;
-        width: 700px;
+        width: 600px;
       }
     }
   }
@@ -80,14 +89,24 @@
     background-color: white;
     margin: 10px 0;
   }
+  &-menu{
+    width: 200px;
+    background-color: #fff;
+    height: 500px;
+    box-shadow: 0px 12px 35px rgba(160, 121, 0, 0.2);
+
+  }
 }
-.edit,.delete{
+.edit,.delete, .detail{
   padding: 10px 15px;
   border-radius: 5px;
   color: #fff;
   &:hover{
     text-decoration: none;
   }
+}
+.detail{
+  background-color: rgb(59, 135, 223);
 }
 .edit{
   background-color: rgb(24, 207, 122);
@@ -110,19 +129,72 @@
   font-weight: bold;
   display: flex;
   gap: 0px 145px;
+  margin-top: 20px;
   &-details{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0 140px;
+    gap: 0 100px;
+  }
+  &-book{
+    gap: 0 165px;
   }
 }
 .container-admin{
-  margin-top: 50px;
   background-color: rgb(255,247,223);
-  padding: 50px 100px;
+  padding: 0 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 0 40px;
 }
 .cre{
   display: flex;
   gap: 0px 100px;
+}
+.export{
+  padding: 20px 75px;
+}
+.yield-content{
+  overflow: hidden;
+  width: 100%;
+}
+.book-se{
+  width: 400px !important;
+}
+.sidebar{
+  box-shadow: 0px 12px 35px rgba(160, 121, 0, 0.2);
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px 0;
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: block;
+    padding: 15px 60px;
+    background-color: #e6b63e;
+
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown-content a:hover {background-color: #f1f1f1}
+}
+.alert{
+  margin-bottom: 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: red;
 }
