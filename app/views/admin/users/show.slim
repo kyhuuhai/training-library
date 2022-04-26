@@ -1,0 +1,19 @@
+.user-new
+  h2
+    | Update User
+  .user-form
+    = form_for([:admin, @user]) do |form|
+      .user-form
+        .user-form-name
+          = form.label :name 
+        .user-form-fieldname
+          = form.text_field :name, value: @user.name
+        .user-form-email
+          = form.label :email 
+        .user-form-fieldname
+          = form.text_field :email, value: @user.email
+        .user-form-check
+          = form.check_box :is_admin, class: 'form-check-input'
+          = form.label :is_admin, "Admin" 
+        .user-submit
+          = form.submit "Update"
