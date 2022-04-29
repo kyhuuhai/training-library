@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_22_035403) do
+ActiveRecord::Schema.define(version: 2022_04_26_065439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,10 +43,24 @@ ActiveRecord::Schema.define(version: 2022_04_22_035403) do
     t.index ["publisher_id"], name: "index_books_on_publisher_id"
   end
 
+  create_table "borrow_requests", force: :cascade do |t|
+    t.date "borrow_date"
+    t.date "return_date"
+    t.boolean "status"
+    t.boolean "accept"
+    t.bigint "user_id"
+    t.bigint "book_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_borrow_requests_on_book_id"
+    t.index ["user_id"], name: "index_borrow_requests_on_user_id"
+  end
+
   create_table "borrow_requets", force: :cascade do |t|
     t.date "borrow_date"
     t.date "return_date"
-    t.integer "status"
+    t.boolean "status"
+    t.boolean "accept"
     t.bigint "user_id"
     t.bigint "book_id"
     t.datetime "created_at", precision: 6, null: false
@@ -124,6 +138,8 @@ ActiveRecord::Schema.define(version: 2022_04_22_035403) do
   add_foreign_key "book_categories", "categories"
   add_foreign_key "books", "authors"
   add_foreign_key "books", "publishers"
+  add_foreign_key "borrow_requests", "books"
+  add_foreign_key "borrow_requests", "users"
   add_foreign_key "borrow_requets", "books"
   add_foreign_key "borrow_requets", "users"
   add_foreign_key "comments", "books"

@@ -27,7 +27,7 @@ body
                   = link_to "Settings", '#'
                 li
                   -if @current_user.is_admin?
-                    = link_to "Dashboard", '#'
+                    = link_to "Dash board", '#'
                 li
                   = link_to "Log out", logout_path, method: "delete"
           - else
