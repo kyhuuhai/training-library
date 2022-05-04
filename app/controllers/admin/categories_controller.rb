@@ -1,6 +1,6 @@
-class Admin::CategoriesController < ApplicationController
+class Admin::CategoriesController < AdminController
   before_action :get_category, except: [:index, :new, :create]
-
+  
   def index
     @category = Category.search(params).paginate(page: params[ :page], per_page: 3)
   end
