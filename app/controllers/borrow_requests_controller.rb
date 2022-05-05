@@ -1,8 +1,7 @@
 class BorrowRequestsController < ApplicationController
-
+  before_action :get_books, only: [:show]
   def show 
     @borrow_request = BorrowRequest.new
-    @book = Book.find_by_id(params[:id])
   end
 
   def create
@@ -18,5 +17,9 @@ class BorrowRequestsController < ApplicationController
   private
     def borrow_request_params
       params.require(:borrow_request).permit(:user_id, :book_id, :borrow_date, :return_date)
+    end
+
+    def get_books
+      @book = Book.find_by_id(params[:id])
     end
 end
