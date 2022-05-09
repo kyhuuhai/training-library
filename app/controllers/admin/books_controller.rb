@@ -1,8 +1,6 @@
-class Admin::BooksController < ApplicationController
-  layout :dynamic_layout
-
+class Admin::BooksController < AdminController
   before_action :get_books, except: [:index, :new, :create]
-
+  
   def new
     @book = Book.new
     @book.build_publisher
@@ -10,20 +8,21 @@ class Admin::BooksController < ApplicationController
   end
   
   def index
-    @books = Book.includes(:author).search(params)
+    @books = Book.includes(:author, :borrow_requets, :follows).search(params)
       .order_name
       .paginate(page: params[:page], per_page: 10)
       respond_to do |format|
         format.html
-        format.xls { send_data @books.to_xls(col_sep: "\t") } 
+        format.xls { send_data @books.to_xls(col_sep: "\t") }
       end
   end
 
   def destroy
-    if @book&.destroy
-      flash[:success] = "Delete successfully"
-    else
+    if @book.borrow_requets.exists?
       flash[:warning] = "Book delete failed"
+    else 
+      @book.destroy
+      flash[:success] = "Delete successfully"
     end
     redirect_to admin_books_path
   end
@@ -34,26 +33,28 @@ class Admin::BooksController < ApplicationController
   def update
     if @book.update(book_params)
       flash[:success] = "Book updated"
+      redirect_to admin_books_path
     else
       flash[:warning] = "Book updatedd failed"
+      render :edit
     end
-    redirect_to admin_books_path
   end
 
   def create
     @book = Book.new(book_params)
     if @book.save
       flash[:success] = "Book create successfully"
+      redirect_to admin_books_path
     else
       flash[:warning] = "Book create failed"
+      render :new
     end
-    redirect_to admin_books_path
   end
 
   private
 
     def book_params
-      params.require(:book).permit(:name, :amount, :price, :status, :author_id, :publisher_id,
+      params.require(:book).permit(:name, :amount, :price, :status, :author_id, :publisher_id, 
         publisher_attributes:[:name], author_attributes:[:name])
     end
     
@@ -61,14 +62,7 @@ class Admin::BooksController < ApplicationController
       @book = Book.find_by_id(params[:id])
       return if @book
       flash[:warning] = "That book could not be found"
-      redirect_to admin_books_path  
+      render :index  
     end
 
-    def dynamic_layout
-      if true # replace for if current_user.admin?
-        "admin"
-      else
-        "users"
-      end
-    end
 end
