@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :users
   resources :authors
   resources :books
+  resources :borrow_requests
   namespace :admin do
     resources :publishers
     resources :authors

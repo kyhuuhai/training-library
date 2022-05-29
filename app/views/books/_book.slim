@@ -13,3 +13,4 @@
     = book.rates.map(&:star).sum
   = link_to "follow",'#', class: "follow"         
   = link_to "Details", "#", class: "details"
+  = link_to "Borrow book", borrow_request_path(book), class: "details"
